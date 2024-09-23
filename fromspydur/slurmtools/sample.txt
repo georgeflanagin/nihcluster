@@ -1,0 +1,18 @@
+NodeName=spdr01 Arch=x86_64 CoresPerSocket=26
+   CPUAlloc=0 CPUTot=52 CPULoad=0.05
+   AvailableFeatures=(null)
+   ActiveFeatures=(null)
+   Gres=(null)
+   NodeAddr=spdr01 NodeHostName=spdr01 Version=20.11.8
+   OS=Linux 4.18.0-372.19.1.el8_6.x86_64 #1 SMP Mon Jul 18 11:14:02 EDT 2022
+   RealMemory=384000 AllocMem=0 FreeMem=351187 Sockets=2 Boards=1
+   State=IDLE ThreadsPerCore=1 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=basic,all,cpunodes,communitynodes
+   BootTime=2022-08-09T13:55:59 SlurmdStartTime=2022-08-09T13:56:17
+   CfgTRES=cpu=52,mem=375G,billing=52
+   AllocTRES=
+   CapWatts=n/a
+   CurrentWatts=0 AveWatts=0
+   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+   Comment=(null)
+
