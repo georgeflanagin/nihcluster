@@ -1,0 +1,52 @@
+# Get the run file. Search for "nvidia cuda download", and 
+# follow the instructions to get the run file for this system.
+# You will wind up with
+#   wget cuda...something.run
+
+# take it out of graphics mode
+#   systemctl stop gdm
+
+# prevent it from trying to restart graphics mode
+#   systemctl disable gdm 
+
+# set it to boot in text mode
+#   systemctl set-default multiuser.target
+
+#   cd wstools
+# copy the files to stop nouveau from loading
+#   cp deny*conf /etc/modprobe.d
+#   cp blacklist*conf /etc/modprobe.d
+#   cd
+
+# edit the file and put modprobe.blacklist=nouveau at the
+# end of the line that starts with GRUB_CMDLINE_LINUX=
+# inside the quotes with the rest of the options (of course).
+#   vi /etc/default/grub
+
+# update the boot image
+#   dracut --force
+
+# update the grub config
+
+#   if [ -d /sys/firmware/efi ]; then
+#       grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+#   else
+#       grub2-mkconfig -o /boot/grub2/grub.cfg
+#   fi
+
+# make the run files executable
+#   chmod 700 *run
+
+# reboot into text mode
+#   shutdown -r now
+
+# install cuda via the runfile. 
+#   ./cuda<TAB>
+
+# check the installation.
+#   nvidia-smi
+
+# restart the graphics mode
+#   systemctl enable gdm
+#   systemctl start gdm
+#   systemctl set-default graphical.target
