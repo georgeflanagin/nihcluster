@@ -1,0 +1,2 @@
+trueuser:/mnt/usrlocal/8	/usr/local/chem.sw 	nfs 	ro,nosuid,nofail 0 0 
+

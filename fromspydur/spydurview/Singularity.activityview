@@ -1,0 +1,26 @@
+Bootstrap: docker
+From: rockylinux:8
+#From: scidas/slurm.rpms:19.05.1
+
+%post
+    yum -y update
+    yum install -y vim
+    yum install -y python3-pip
+    yum install -y slurm-client
+    pip3 install --upgrade pip
+    pip install wheel
+    pip install sinfo
+    yum install -y git
+    dnf install -y python3.8
+    git clone https://github.com/alinka955/activity-view.git /activityview-app
+    cd /activityview-app
+    git pull origin master
+
+%startscript
+    exec useradd -ms /bin/bash admin
+    exec chown -R admin:admin /activityview-app
+    exec chmod 755 /activityview-app
+    exec su admin
+    exec cd /activityview-app
+    exec source activity-view.sh
+
