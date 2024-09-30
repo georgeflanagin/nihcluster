@@ -17,7 +17,9 @@ import sys
 from tqdm import tqdm
 from datetime import datetime
 
+######################
 # Global Variables
+######################
 default_cluster = "spydur"  # Default cluster
 created_files = ["tunnelspec.txt", "urlspec.txt", "salloc.txt", "jparams.txt"]
 jupyter_exe = "/usr/local/sw/anaconda/anaconda3/bin/jupyter notebook --NotebookApp.open_browser=False"
