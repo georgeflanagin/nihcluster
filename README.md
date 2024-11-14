@@ -47,7 +47,24 @@ This document serves as an inventory of the files gathered, providing explanatio
       7. **Browser Launch**: Opens the generated Jupyter Notebook URL in the default browser.
     - `jupyter.sh`: This script automates the setup of a Jupyter Notebook on an HPC cluster, including SLURM job allocation, port forwarding, and browser launch.
     - `m.sh`: This function overrides the `conda` command to set `LD_LIBRARY_PATH` for `myang`
+    - `makedirpair.sh`: This script creates a directory structure under the user's home directory with a parent directory and two subdirectories: `shared` (read/write for a specified group) and `readonly` (readable by the group but writable only by the user), ensuring proper permissions and group association for collaborative use.
+    - `managed.sh`: This script modifies the permissions of home directories for a list of users, setting them to **2711**. This ensures that:
+      1. The **setgid** bit is set (2), so files created in these directories inherit the group of the directory.
+      2. The owner has execute (1) permissions.
+      3. Others have execute (1) permissions, allowing access to the directory structure but not file reading.
+    - `map_zap_class.sh`: This SLURM script processes genomic data by mapping sequencing reads to a reference genome. It handles merging, trimming, mapping, sorting, and removing duplicates from reads. Quality control is integrated at multiple stages, and results are organized into directories. Parallelization is achieved using SLURM array jobs, making it efficient for large datasets. Logs track warnings and completion status throughout the pipeline.
+    - `metabatch.sh`: This script overrides `sbatch` to log job submissions into a file and continuously monitors the pipeline using `pipereader`.
+    - `ollama.sh`: This script detects the Linux architecture and installs the appropriate version of Ollama, along with optional GPU dependencies like NVIDIA or AMD drivers and CUDA libraries, ensuring compatibility and automation in setup.
+    - `qcinstall.sh`: This script installs or updates Q-Chem with platform-specific checks, internet verification, and live updates.
+    - `regroup.sh`: This script defines a `regroup` function to recursively change the group ownership and permissions of a directory and its contents.
+    - `resetpartitions.sh`: This script loops through a list of partitions and disables oversubscription for each by running the `scontrol update` command as the `slurm` user.
+    - `Rpackages.sh`: This script installs essential R packages for spatial and ecological data analysis.
+    - `saif.sh`: This script automates the creation and configuration of a Conda environment named "saif" for installing Python dependencies and the `rl_zoo3` package.
+    - `slurm_completion.sh`: This script provides bash completion for various Slurm commands, enhancing the user experience by suggesting available options, parameters, and values dynamically during command-line input.
+    - `slurm.sh`: These functions help manage Slurm jobs by finding a job's script, suspending all running jobs, and resuming previously suspended jobs.
     
+
+
 
 
 
