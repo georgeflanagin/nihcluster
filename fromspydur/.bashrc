@@ -46,21 +46,6 @@ export alina="ae9qg"
 export all_nodes="spdr01 spdr02 spdr03 spdr04 spdr05 spdr06 spdr07 spdr08 spdr09 spdr10 spdr11 spdr12 spdr13 spdr14 spdr15 spdr16 spdr17 spdr18 spdr50 spdr51 spdr52 spdr53 spdr54 spdr55 spdr56 spdr57 spdr58 spdr59 spdr60 spdr61 "
 
 
-addcats()
-{
-    cd ~/addcats
-    python addcats.py $@
-    back
-}
-
-as()
-{
-    if [ -z $1 ]; then
-        echo "Usage: as {user} \"{operation}\" "
-        return
-    fi
-    sudo -u "$1" "$2"
-}
 
 bump()
 {
