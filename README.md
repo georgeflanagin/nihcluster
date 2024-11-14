@@ -8,8 +8,8 @@ This document serves as an inventory of the files gathered, providing explanatio
 
 ### Folders and Files:
 
-- **git.bash**: Contains Git workflow utilities and macros designed for enhanced Git functionality, with specific adaptations for the University of Richmond environment.
-- **.bashrc**: A Bash configuration file that initializes environment variables, aliases, and functions for interactive shell sessions. It includes SLURM-specific utilities and Python environment setups.
+- **`git.bash`**: Contains Git workflow utilities and macros designed for enhanced Git functionality, with specific adaptations for the University of Richmond environment.
+- **`.bashrc`**: A Bash configuration file that initializes environment variables, aliases, and functions for interactive shell sessions. It includes SLURM-specific utilities and Python environment setups.
 
 1. **shellscripts**
     - `addstudent.sh`: Automates the creation of class submission directories for students, ensuring appropriate permissions and access
@@ -62,6 +62,16 @@ This document serves as an inventory of the files gathered, providing explanatio
     - `saif.sh`: This script automates the creation and configuration of a Conda environment named "saif" for installing Python dependencies and the `rl_zoo3` package.
     - `slurm_completion.sh`: This script provides bash completion for various Slurm commands, enhancing the user experience by suggesting available options, parameters, and values dynamically during command-line input.
     - `slurm.sh`: These functions help manage Slurm jobs by finding a job's script, suspending all running jobs, and resuming previously suspended jobs.
+    - `softquotas.sh`:
+    - `spydurmap.sh`:
+    - `summer2022.sh`:
+    - `suspend_all.sh`:
+    - `updatesubmit.sh`:
+    - `usage.sh`:
+    - `usercommands.sh`:
+    - `whoisin.sh`: Shell function to show users in a named group and the date of the last activity.
+    - `x.sh`:
+
     
 
 
