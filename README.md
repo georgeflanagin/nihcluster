@@ -12,93 +12,97 @@ This document serves as an inventory of the files gathered, providing explanatio
 - **`.bashrc`**: A Bash configuration file that initializes environment variables, aliases, and functions for interactive shell sessions. It includes SLURM-specific utilities and Python environment setups.
 
 1. **shellscripts**
-    - `addstudent.sh`: Automates the creation of class submission directories for students, ensuring appropriate permissions and access
-    - `bash.sh`: Configures environment variables, PATH settings, and module loading priorities for shell sessions, with additional support for Gaussian and other software.
-    -  `beth_jupyter.sh`: SLURM of Beth in Dr. Mel's lab to run jupyter notebook
-    - `build.sh`: Sets up environment variables for PROJ library installation and compiles the project using CMake, logging the output for debugging purposes.
-    - `can.sh`: A function provides a utility function to check read, write, or execute permissions on files or directories.
-    - `check_active_user.sh`: A function to check active user based on usage and year
-    -  `checkover.sh`: Check specific nodes about their total memory and sum memory requested
-    - `compiledeck.sh`: Automates the setup, configuration, and compilation of Quantum ESPRESSO, logging each step and managing environment variables and dependencies.
-    - `condafy.sh`: Initialize anaconda3
-    - `cp.perms.sh`: Expands read and execute permissions for a list of user directories, ensuring accessibility for others as specified.
-    - `dailybackup.sh`: Backup root and email Carol Parish if there is a problem
-    -  `detect.sh`: This shell script checks whether the `liblzma` library used by `sshd` contains a specific function signature to determine potential vulnerability.
-    - `envlist.sh`: The script creates multiple Conda environments with Python 3.9 and logs their package lists.
-    - `filemove.sh`: The script copies a large file to a local scratch directory for temporary use and then deletes it.
-    - `fixcarolsstudents.sh`: This script configures user directories and permissions for Carol's students on Spydur to ensure consistent access and group settings for their home and scratch directories.
-    - `fixcparish.sh`: This script ensures proper group ownership, permissions, and setgid settings for a list of users' home and scratch directories in Spydur, maintaining consistent group access and permissions for all managed files and directories.
-    - `getfile.sh`: This script provides three utility functions:
-      1. **`whoowns`**: Prints the owner of a given file or directory using the `stat` command.
-      2. **`getfile`**: Copies a file to the current directory, temporarily modifying permissions if the file is not readable by the user.
-      3. **`statfile`**: Displays detailed information about a file, temporarily modifying directory permissions if the file is not accessible.
-    - `hogs.sh`: This command uses `xfs_quota` to generate a detailed quota report for all users (`-u`) on the `/home` filesystem, including both active and inactive users (`-ah`). 
-    - `install_cuba.sh`: This script is a comprehensive, interactive utility for installing and updating NVIDIA drivers and CUDA libraries on Linux systems (versions 8 or 9). It includes extensive pre-installation checks, system updates, uninstallation of existing drivers, and configuration of necessary repositories, ensuring compatibility and a clean installation.
-    - `install_ollama.sh`: This shell script is an advanced installer for **Ollama** on Linux systems. It detects the system architecture, manages dependencies, and handles the installation of necessary GPU drivers (NVIDIA or AMD) and CUDA libraries, ensuring compatibility with the user's system. It also supports WSL2 environments, systemd configuration, and fallback modes for CPU-only operation if no supported GPU is detected.
-    - `inuse.sh`: This script lists all users in the "managed" group, then iterates over their usernames and displays the disk usage of each user's home directory.
-    - `jobname.sh`: This script retrieves and prints all environment variables and their values in the current shell session by using the `env` command.
-    - `jupyter.py`: This Python script is a sophisticated utility for automating the setup of Jupyter Notebook on an HPC cluster (default is "spydur"). It performs the following key functions:
-      1. **Argument Parsing**: Accepts parameters such as partition, username, runtime (hours), GPU count, and cluster name.
-      2. **Environment Validation**: Validates the OS, browser, cluster partition, and required tools.
-      3. **Port Allocation**: Finds open ports for setting up SSH tunnels between the local machine and the cluster head/computing nodes.
-      4. **SLURM Job Submission**: Configures and submits a SLURM job to allocate resources on the cluster.
-      5. **Jupyter Notebook Launch**: Starts the Jupyter Notebook server on the allocated cluster node, configures a tunnel, and generates a connection URL.
-      6. **Progress Feedback**: Provides user feedback through a progress bar during the setup.
-      7. **Browser Launch**: Opens the generated Jupyter Notebook URL in the default browser.
-    - `jupyter.sh`: This script automates the setup of a Jupyter Notebook on an HPC cluster, including SLURM job allocation, port forwarding, and browser launch.
-    - `m.sh`: This function overrides the `conda` command to set `LD_LIBRARY_PATH` for `myang`
-    - `makedirpair.sh`: This script creates a directory structure under the user's home directory with a parent directory and two subdirectories: `shared` (read/write for a specified group) and `readonly` (readable by the group but writable only by the user), ensuring proper permissions and group association for collaborative use.
-    - `managed.sh`: This script modifies the permissions of home directories for a list of users, setting them to **2711**. This ensures that:
-      1. The **setgid** bit is set (2), so files created in these directories inherit the group of the directory.
-      2. The owner has execute (1) permissions.
-      3. Others have execute (1) permissions, allowing access to the directory structure but not file reading.
-    - `map_zap_class.sh`: This SLURM script processes genomic data by mapping sequencing reads to a reference genome. It handles merging, trimming, mapping, sorting, and removing duplicates from reads. Quality control is integrated at multiple stages, and results are organized into directories. Parallelization is achieved using SLURM array jobs, making it efficient for large datasets. Logs track warnings and completion status throughout the pipeline.
-    - `metabatch.sh`: This script overrides `sbatch` to log job submissions into a file and continuously monitors the pipeline using `pipereader`.
-    - `ollama.sh`: This script detects the Linux architecture and installs the appropriate version of Ollama, along with optional GPU dependencies like NVIDIA or AMD drivers and CUDA libraries, ensuring compatibility and automation in setup.
-    - `qcinstall.sh`: This script installs or updates Q-Chem with platform-specific checks, internet verification, and live updates.
-    - `regroup.sh`: This script defines a `regroup` function to recursively change the group ownership and permissions of a directory and its contents.
-    - `resetpartitions.sh`: This script loops through a list of partitions and disables oversubscription for each by running the `scontrol update` command as the `slurm` user.
-    - `Rpackages.sh`: This script installs essential R packages for spatial and ecological data analysis.
-    - `saif.sh`: This script automates the creation and configuration of a Conda environment named "saif" for installing Python dependencies and the `rl_zoo3` package.
-    - `slurm_completion.sh`: This script provides bash completion for various Slurm commands, enhancing the user experience by suggesting available options, parameters, and values dynamically during command-line input.
-    - `slurm.sh`: These functions help manage Slurm jobs by finding a job's script, suspending all running jobs, and resuming previously suspended jobs.
-    - `softquotas.sh`:
-    - `spydurmap.sh`:
-    - `summer2022.sh`:
-    - `suspend_all.sh`:
-    - `updatesubmit.sh`:
-    - `usage.sh`:
-    - `usercommands.sh`:
-    - `whoisin.sh`: Shell function to show users in a named group and the date of the last activity.
-    - `x.sh`:
-
-    
-
-
-
-
+  - `addstudent.sh`: Automates the creation of class submission directories for students, ensuring appropriate permissions and access.
+  - `bash.sh`: Configures environment variables, PATH settings, and module loading priorities for shell sessions, with additional support for Gaussian and other software.
+  - `beth_jupyter.sh`: SLURM script for Beth in Dr. Mel's lab to run Jupyter Notebook.
+  - `build.sh`: Sets up environment variables for PROJ library installation and compiles the project using CMake, logging the output for debugging purposes.
+  - `can.sh`: Utility script to check read, write, or execute permissions on files or directories.
+  - `check_active_user.sh`: Checks active users based on usage and year.
+  - `checkover.sh`: Checks specific nodes for their total memory and sums memory requested.
+  - `compiledeck.sh`: Automates the setup, configuration, and compilation of Quantum ESPRESSO, logging each step and managing dependencies.
+  - `condafy.sh`: Initializes Anaconda3.
+  - `cp.perms.sh`: Expands read and execute permissions for a list of user directories, ensuring accessibility for others.
+  - `dailybackup.sh`: Backs up root and emails Carol Parish if there is a problem.
+  - `detect.sh`: Checks whether the `liblzma` library used by `sshd` contains a specific function signature for potential vulnerabilities.
+  - `envlist.sh`: Creates multiple Conda environments with Python 3.9 and logs their package lists.
+  - `filemove.sh`: Copies a large file to a local scratch directory for temporary use and then deletes it.
+  - `fixcarolsstudents.sh`: Configures user directories and permissions for Carol's students on Spydur.
+  - `fixcparish.sh`: Ensures proper group ownership, permissions, and setgid settings for a list of users' directories.
+  - `getfile.sh`: Provides utility functions like `whoowns`, `getfile`, and `statfile` for managing file permissions and ownership.
+  - `hogs.sh`: Generates a detailed quota report for all users on the `/home` filesystem using `xfs_quota`.
+  - `install_cuba.sh`: Installs or updates NVIDIA drivers and CUDA libraries with extensive system checks.
+  - `install_ollama.sh`: Installs Ollama with GPU or CPU-only compatibility and dependency management.
+  - `inuse.sh`: Lists managed users and displays disk usage of their home directories.
+  - `jobname.sh`: Retrieves and prints all environment variables and their values in the current shell session.
+  - `jupyter.py`: Automates Jupyter Notebook setup on an HPC cluster with SLURM job submission and port forwarding.
+  - `jupyter.sh`: Automates the setup of Jupyter Notebook on an HPC cluster.
+  - `m.sh`: Overrides the `conda` command to set `LD_LIBRARY_PATH` for `myang`.
+  - `makedirpair.sh`: Creates a directory structure under the user's home directory with shared and readonly subdirectories.
+  - `managed.sh`: Modifies permissions of home directories for a list of users to ensure setgid and proper access.
+  - `map_zap_class.sh`: Processes genomic data using SLURM with parallelization and quality control.
+  - `metabatch.sh`: Logs SLURM job submissions and monitors the pipeline with `pipereader`.
+  - `ollama.sh`: Installs Ollama and GPU dependencies, ensuring system compatibility.
+  - `qcinstall.sh`: Installs or updates Q-Chem with platform-specific checks.
+  - `regroup.sh`: Recursively changes group ownership and permissions of directories.
+  - `resetpartitions.sh`: Disables oversubscription for SLURM partitions.
+  - `Rpackages.sh`: Installs R packages for spatial and ecological data analysis.
+  - `saif.sh`: Creates and configures a Conda environment named "saif."
+  - `slurm_completion.sh`: Provides bash completion for SLURM commands.
+  - `slurm.sh`: Manages SLURM jobs by finding, suspending, or resuming them.
+  - `softquotas.sh`: Sets a 10GB soft quota limit for users on the `/home` directory.
+  - `spydurmap.sh`: Temporarily modifies `PYTHONPATH` to run `mapper.py`.
+  - `summer2022.sh`: Deletes a project directory and copies files to multiple users' home directories.
+  - `suspend_all.sh`: Suspends SLURM jobs and emails a notification of suspended job IDs.
+  - `updatesubmit.sh`: Adds a `submit` command to students' `.bashrc` for file submission.
+  - `usage.sh`: Generates a quota usage report for the `/home` directory.
+  - `usercommands.sh`: Collects and processes `.bash_history` files for managed users.
+  - `whoisin.sh`: Shows users in a named group and their last activity date.
+      
 
 2. **slurmtools**
-   - List of files:
-     - `slurm_tool1.py`: (Description to be added)
-     - `slurm_tool2.conf`: (Description to be added)
-     - ...
+  - `node_off.py`: This script, `node_off`, is a Python program that powers down a specified SLURM node by draining it, sending a stop signal, verifying its power status, and logging the process while handling errors and user arguments.
+  - `node_on.py`: This script, `node_on`, is a Python program that powers on a specified SLURM node, verifies its status, synchronizes it if successfully powered on, and logs the process while handling errors and user arguments.
+  - `nodecheck.py`: This script, `nodecheck`, is a Python program designed to monitor SLURM nodes by using `sinfo` to check their states, identifying any nodes in problematic states, and sending an email notification with the details to the HPC team if issues are detected. It also supports verbose output for detailed logging and handles user-provided arguments.
+  - `nodecheck.sh`: This Bash script executes the `nodecheck.py` Python script after sourcing the `condafy.sh` script to set up the Conda environment, and then navigates to the `/usr/local/sw/slurmtools` directory where the Python script is located.
+  - `parser_konstants.py`: This Python module provides common constants, regular expressions, and parsing functions for use in recursive descent parsers, supporting parsing of integers, floats, timestamps, character sequences, and other structured data formats, while leveraging the `parsec` library for functional parsing.
+  - `q.json`: json file for `qq.py`
+  - `qq.py`: This script, `qq`, is a command-line utility that serves as an interactive shell for managing SLURM re-queuing operations. It processes user commands, executes them using `qq_tools`, supports shell command execution and graceful exits, and handles syntax errors or interruptions.
+  - `resume.sh`: This Bash script navigates to the `/usr/local/sw/slurmtools` directory, sets up the environment by updating the `PATH` and `PYTHONPATH`, extracts a numeric part from a provided node identifier by removing a prefix (`spdr`), and then runs the `node_on.py` script with the numeric node identifier as an argument.
+  - `slurm.conf`: This `slurm.conf` file configures the `spydur` SLURM cluster, defining cluster details, user authentication, logging, accounting, compute nodes, and partitions with varying resources (e.g., GPUs, memory). It includes an external configuration file, `slurmplus.conf`, for additional settings.
+  - `slurm.sh`: This script defines SLURM utility functions:
+    - **`findscript`**: Retrieves a SLURM job's submission command.
+    - **`nodepower`**: Powers nodes on or off.
+    - **`readscript`**: Views and cleans up a job's submission script.
+    - **`reserve`**: Reserves a node for users for a duration or until a date.
+    - **`resume`**: Resumes specified nodes.
+    - **`suspend`**: Suspends specified nodes.
+    - **`showlog`**: Displays SLURM logs in reverse.
+  - `slurm.test.conf`: This `slurm.conf` file configures the `spydur` SLURM cluster, specifying cluster details, node resources, partitions, scheduling, accounting, and power-saving settings, along with additional parameters for logging and job management.
+  - `slurmparser.py`: This Python script parses SLURM node data using the `parsec` library to extract key-value pairs, making the information more machine-readable and demonstrating efficient parsing techniques.
+  - `slurmplus.conf`: This configuration defines SLURM partitions for grouping nodes by purpose, sets job scheduling options, and includes placeholders for power-saving and debugging settings.
+  - `slurmplus.devel.conf`: This configuration file defines SLURM settings for job scheduling, partitions, quality of service, and optional power-saving features. It organizes nodes into functional groups, includes an `onhold` partition, prioritizes jobs with multifactor scheduling, and provides placeholders for debugging and energy efficiency management.
+  - `slurmplus.prod.conf`: This SLURM configuration defines partitions for organizing nodes into functional groups (e.g., `cpunodes`, `gpunodes`, `communitynodes`) with specified memory per CPU. It includes an `onhold` partition for low-priority jobs and outlines optional power-saving features, such as suspend/resume settings, to manage node activity efficiently. Debugging options and job scheduling adjustments are also provided.
+  - `suspend.sh`: This script runs `node_off.py` for a specified node, setting up the environment, stripping the "spdr" prefix from the node ID, and logging execution time and errors.
 
 3. **spydurview**
-   - List of files:
-     - `view_script1.py`: (Description to be added)
-     - `view_config.yaml`: (Description to be added)
-     - ...
+  - `Dockerfile`: This Dockerfile uses Rocky Linux 8, updates the system, installs Git and Python 3.8, clones the `activity-view` repository, and sources `activity-view.sh`. Note: only the last `FROM` is effective.
+  - `info.dat`: This data lists SLURM nodes with metrics: node name, percentage (e.g., CPU usage), and a numeric value (e.g., memory or jobs).
+  - `mapper.py`: This script, `mapper`, generates memory and core usage maps for SLURM nodes by parsing `sinfo` command output, scaling values for visualization, and printing the results. It utilizes structured error handling, modular scaling logic, and flexible input/output handling.
+  - `scaling.py`: This script, `scaling`, generates a visual representation of resource usage as a bar (using customizable characters) by scaling `used` and `max_available` values proportionally. It provides flexible scaling, error handling, and can visualize multiple input pairs for debugging or visualization purposes.
+  - `Singularity.activityview`: This Singularity file builds a `rockylinux:8` container, installs Python, Slurm client, and Git, clones the `activity-view` project, sets up an `admin` user, assigns permissions, and runs `activity-view.sh` at startup.
+  - `spydurview_nologging.py`: `spydurview` is a terminal dashboard for monitoring SLURM nodes, showing core and memory usage with color-coded status (green, yellow, red) and supporting live refresh and help.
+  - `spydurview.py`: Same with `spydurview_nologging.py`, but with logging
+  - `spydurview.sh`: This function temporarily sets `PYTHONPATH` and clears `LD_LIBRARY_PATH` to run `spydurview.py`, then restores the original environment variables.
 
 4. **vimstuff**
-   - List of files:
-     - `vim_config.vim`: (Description to be added)
-     - `syntax_highlighting.vim`: (Description to be added)
-     - ...
+  - `dotvim`
+  - `.vimrc`
+  - `vimrc`
+
 
 ---
 
-## From Wstool
+## From Work Station tools (wstool)
 
 ### Folders and Files:
 
